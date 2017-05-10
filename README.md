@@ -2,6 +2,8 @@
 
 This repo houses the coding examples and demos for two [edUi Conference](http://eduiconf.org) (2017) talks: one on [bots](http://eduiconf.org/sessions/building-bots-for-the-conversation-ui/) and one on [progressive web apps](http://eduiconf.org/sessions/progressive-web-apps/). The latter is co-presented by [Ashish Pathak](https://github.com/ashishpat).
 
+Summaries of the talks can be found below. Additionally, the source for the [codepunk bot](https://github.com/codepunk-io/io.codepunk.bot) that will be shown at the bot presentation is also available in its own repository.
+
 ### Bots for the Conversation UI
 
 Facebook Messenger, Skype, Slack, WhatsApp: messaging has become the heart and soul of the mobile device, and both Microsoft and Facebook have stressed the emergence of the conversation space as the next big frontier for the Internet. With the progress on artificial intelligence services, this means the growth of bots.
