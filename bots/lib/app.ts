@@ -19,6 +19,40 @@ function startBot(server: restify.Server): void {
     buildDialogs(bot);
 }
 
+function createAudioCard(sess: builder.Session): builder.AudioCard {
+    return new builder.AudioCard(sess)
+        .title("Programmable Bots and the Microsoft Bot Framework")
+        .subtitle("")
+        .text("Bots are all the rage, and the conversation UI is starting to enter the lexicon of technology conference speakers, marketing departments, and hacker...")
+        .image(builder.CardImage.create(sess, "https://szul.blob.core.windows.net/images/codepunk-013-programmable-bots-and-header.png"))
+        .media(<any>[
+            {
+                url: "https://media.blubrry.com/codepunk/archive.org/download/CodepunkEpisode013/Codepunk-Episode-013.mp3"
+            }
+    ]);
+}
+
+function createVideoCard(): any {
+
+}
+
+function createThumbnailCard(sess: builder.Session): builder.ThumbnailCard {
+return new builder.ThumbnailCard(sess)
+        .title("")
+        .subtitle("")
+        .text("")
+        .images([
+            builder.CardImage.create(sess, "IMAGE_URL")
+        ])
+        .buttons([
+            builder.CardAction.openUrl(sess, "TARGET_LINK", "Read more...")
+]);
+}
+
+function createHeroCard(): any {
+
+}
+
 function buildDialogs(bot: builder.UniversalBot): void {
     bot.dialog('/', [
         (sess, args, next) => {
