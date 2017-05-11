@@ -4,7 +4,7 @@ import * as builder from "botbuilder";
 function startServer(): void {
     var server = restify.createServer();
     server.listen(process.env.port || process.env.PORT || 3978, () => {
-        console.log('%s listening to %s', server.name, server.url);
+        console.log("%s listening to %s", server.name, server.url);
         startBot(server);
     });
 }
@@ -15,7 +15,7 @@ function startBot(server: restify.Server): void {
         appPassword: process.env.MICROSOFT_APP_PASSWORD
     });
     var bot = new builder.UniversalBot(conn);
-    server.post('/api/messages', conn.listen());
+    server.post("/api/messages", conn.listen());
     buildDialogs(bot);
 }
 
@@ -32,12 +32,33 @@ function createAudioCard(sess: builder.Session): builder.AudioCard {
     ]);
 }
 
-function createVideoCard(): any {
+function createVideoCard(sess: builder.Session): builder.VideoCard {
+    return new builder.VideoCard(sess)
+        .title("")
+        .subtitle("")
+        .text("")
+        .image(builder.CardImage.create(sess, "https://yt3.ggpht.com/-cnBYz6wq0mI/AAAAAAAAAAI/AAAAAAAAAAA/lcXH-518deI/s176-c-k-no-mo-rj-c0xffffff/photo.jpg"))
+        .media(<any>[
+            { 
+                url: "https://youtu.be/iXF4nhhN3NY?list=PLM7E2OfCPpfrEvxM9JvImU7LLl30aPrkd"
+            }
+    ]);
+}
 
+function createAnimationCard(sess: builder.Session): builder.AnimationCard {
+    return new builder.AnimationCard(sess)
+        .title("")
+        .subtitle("")
+        .image(builder.CardImage.create(sess, "https://yt3.ggpht.com/-cnBYz6wq0mI/AAAAAAAAAAI/AAAAAAAAAAA/lcXH-518deI/s176-c-k-no-mo-rj-c0xffffff/photo.jpg"))
+        .media(<any>[
+            {
+                url: "https://media.giphy.com/media/HrB1MUATg24Ra/giphy.gif"
+            }
+        ]);
 }
 
 function createThumbnailCard(sess: builder.Session): builder.ThumbnailCard {
-return new builder.ThumbnailCard(sess)
+    return new builder.ThumbnailCard(sess)
         .title("")
         .subtitle("")
         .text("")
@@ -46,34 +67,82 @@ return new builder.ThumbnailCard(sess)
         ])
         .buttons([
             builder.CardAction.openUrl(sess, "TARGET_LINK", "Read more...")
-]);
+    ]);
 }
 
-function createHeroCard(): any {
+function createHeroCard(sess: builder.Session): builder.HeroCard {
+    return new builder.HeroCard(sess)
+        .title("")
+        .subtitle("")
+        .text("")
+        .images([
+            builder.CardImage.create(sess, "IMAGE_URL")
+        ])
+        .buttons([
+            builder.CardAction.openUrl(sess, "TARGET_LINK", "Read more...")
+        ]);
+}
 
+function createSigninCard(sess: builder.Session): builder.SigninCard {
+    return new builder.SigninCard(sess)
+        .text("Sign-In Card")
+        .button("Sign-in", "TARGET_LOGIN_URL")
 }
 
 function buildDialogs(bot: builder.UniversalBot): void {
-    bot.dialog('/', [
+    bot.dialog("/", [
         (sess, args, next) => {
             if (!sess.userData.name) {
-                sess.beginDialog('/profile');
-            } else {
+                sess.beginDialog("/profile");
+            }
+            else if (sess.userData.statement == "") {
+
+            }
+            else {
                 next();
             }
         },
         (sess, results) => {
-            sess.send('Hello %s!', sess.userData.name);
+            sess.replaceDialog("/choice");
         }
     ]);
-
-    bot.dialog('/profile', [
+    bot.dialog("/profile", [
         (sess) => {
-            builder.Prompts.text(sess, 'Hello user! What may we call you?');
+            builder.Prompts.text(sess, "Hello user! What may we call you?");
         },
         (sess, results) => {
-            sess.userData.name = results.response;
+            sess.send("Hello %s!", results.response);
             sess.endDialog();
+        }
+    ]);
+    bot.dialog("/choice", [
+        (sess) => {
+            builder.Prompts.choice(sess, "What may we help you with?", [
+                "Audio Card"
+                ,"Video Card"
+                ,"Animation Card"
+                ,"Thumbnail Card"
+                ,"Hero Card"
+                ,"Sign-In Card"
+            ]);
+        },
+        (sess, results) => {
+            switch (results.response.entity) {
+                case "Audio Card":
+                    break;
+                case "Video Card":
+                    break;
+                case "Animation Card":
+                    break;
+                case "Thumbnail Card":
+                    break;
+                case "Hero Card":
+                    break;
+                case "Sign-In Card":
+                    break;
+                default:
+                    break;
+            }
         }
     ]);
 }
