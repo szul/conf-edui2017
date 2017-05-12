@@ -129,16 +129,22 @@ function buildDialogs(bot: builder.UniversalBot): void {
         (sess, results) => {
             switch (results.response.entity) {
                 case "Audio Card":
+                    sess.send(new builder.Message(sess).addAttachment(createAudioCard(sess)));
                     break;
                 case "Video Card":
+                    sess.send(new builder.Message(sess).addAttachment(createVideoCard(sess)));
                     break;
                 case "Animation Card":
+                    sess.send(new builder.Message(sess).addAttachment(createAnimationCard(sess)));
                     break;
                 case "Thumbnail Card":
+                    sess.send(new builder.Message(sess).addAttachment(createThumbnailCard(sess)));
                     break;
                 case "Hero Card":
+                    sess.send(new builder.Message(sess).addAttachment(createHeroCard(sess)));
                     break;
                 case "Sign-In Card":
+                    sess.send(new builder.Message(sess).addAttachment(createSigninCard(sess)));
                     break;
                 default:
                     break;
