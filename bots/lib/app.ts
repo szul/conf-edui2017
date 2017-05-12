@@ -90,7 +90,17 @@ function createSigninCard(sess: builder.Session): builder.SigninCard {
 }
 
 function buildDialogs(bot: builder.UniversalBot): void {
-    bot.dialog("/", [
+    var intents = new builder.IntentDialog();
+    bot.dialog("/", intents);
+    intents.matches(/school of medicine|^som$/i, (sess) => {
+        sess.send("Hello from the UVA SOM IT team!");
+    });
+    intents.onDefault([
+        (sess, args, next) => {
+            sess.replaceDialog("/init");
+        }
+    ]);
+    bot.dialog("/init", [
         (sess, args, next) => {
             if (!sess.userData.name) {
                 sess.beginDialog("/profile");
@@ -98,6 +108,9 @@ function buildDialogs(bot: builder.UniversalBot): void {
             else {
                 next();
             }
+        },
+        (sess, args, next) => {
+            builder.Prompts.text(sess, "What may we help you with?");
         },
         (sess, results) => {
             sess.replaceDialog("/choice");
@@ -114,7 +127,7 @@ function buildDialogs(bot: builder.UniversalBot): void {
     ]);
     bot.dialog("/choice", [
         (sess) => {
-            builder.Prompts.choice(sess, "What may we help you with?", [
+            builder.Prompts.choice(sess, "Pick a dialog.", [
                 "Audio Card"
                 ,"Video Card"
                 ,"Animation Card"
