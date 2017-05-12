@@ -95,9 +95,6 @@ function buildDialogs(bot: builder.UniversalBot): void {
             if (!sess.userData.name) {
                 sess.beginDialog("/profile");
             }
-            else if (sess.userData.statement == "") {
-
-            }
             else {
                 next();
             }
@@ -124,6 +121,7 @@ function buildDialogs(bot: builder.UniversalBot): void {
                 ,"Thumbnail Card"
                 ,"Hero Card"
                 ,"Sign-In Card"
+                ,"Exit"
             ]);
         },
         (sess, results) => {
@@ -146,8 +144,12 @@ function buildDialogs(bot: builder.UniversalBot): void {
                 case "Sign-In Card":
                     sess.send(new builder.Message(sess).addAttachment(createSigninCard(sess)));
                     break;
-                default:
-                    break;
+            }
+            if(results.response.entity === "Exit") {
+                sess.replaceDialog("/");
+            }
+            else {
+                sess.replaceDialog("/choice");
             }
         }
     ]);
