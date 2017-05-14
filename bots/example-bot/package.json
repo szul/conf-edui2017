@@ -1,5 +1,5 @@
 {
-  "name": "conf-edui2017-bots",
+  "name": "conf-edui2017-bots-example-bot",
   "version": "0.1.0",
   "description": "Microsoft Bot Framework examples for the edUi Conference",
   "main": "server.js",

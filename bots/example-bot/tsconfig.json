@@ -1,0 +1,16 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+                "module": "commonjs", 
+                "target": "es5",
+                "sourceMap": true,
+                "declaration": false,
+                "removeComments": true,
+                "outDir": "./dist",
+                "allowJs": true
+            },
+    "files": [
+        "./lib/cards.ts",
+        "./lib/app.ts"
+    ]
+}
