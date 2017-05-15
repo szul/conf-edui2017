@@ -33,6 +33,12 @@ function buildDialogs(bot: builder.UniversalBot): void {
     intents.matches(/^carousel$/i, (sess) => {
         sess.replaceDialog("/carousel");
     });
+    intents.matches(/^talk$/i, (sess) => {
+        sess.say("I have nothing to say to you at this time.", `<voice xml:lang="en-gb" gender="female">I have <emphasis level="moderate">nothing</emphasis> to say to you at this time.</voice>`, {
+                inputHint: builder.InputHint.ignoringInput
+            }
+        );
+    });
     intents.onDefault([
         (sess, args, next) => {
             if (!sess.userData.name) {
@@ -111,7 +117,7 @@ function buildDialogs(bot: builder.UniversalBot): void {
     bot.dialog("version", (sess, args, next) => {
         sess.endDialog("version 0.0.1");
     }).triggerAction({
-        matches: /version/
+        matches: /version/i
     });
 }
 
