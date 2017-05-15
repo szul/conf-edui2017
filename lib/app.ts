@@ -27,12 +27,13 @@ function buildDialogs(bot: builder.UniversalBot): void {
     intents.matches(/school of medicine|^som$/i, (sess) => {
         sess.send("Hello from the UVA SOM IT team!");
     });
+    intents.matches(/^cards$/i, (sess) => {
+        sess.replaceDialog("/choice");
+    });
+    intents.matches(/^carousel$/i, (sess) => {
+        sess.replaceDialog("/carousel");
+    });
     intents.onDefault([
-        (sess, args, next) => {
-            sess.replaceDialog("/init");
-        }
-    ]);
-    bot.dialog("/init", [
         (sess, args, next) => {
             if (!sess.userData.name) {
                 sess.beginDialog("/profile");
@@ -41,24 +42,21 @@ function buildDialogs(bot: builder.UniversalBot): void {
                 next();
             }
         },
-        (sess, args, next) => {
-            builder.Prompts.text(sess, "What may we help you with?");
-        },
         (sess, results) => {
-            sess.replaceDialog("/choice");
+            sess.send(`Hello ${sess.userData.name}! What may we help you with?`);
         }
     ]);
     bot.dialog("/profile", [
-        (sess) => {
+        (sess, args, next) => {
             builder.Prompts.text(sess, "Hello user! What may we call you?");
         },
         (sess, results) => {
-            sess.send("Hello %s!", results.response);
+            sess.userData.name = results.response;
             sess.endDialog();
         }
     ]);
     bot.dialog("/choice", [
-        (sess) => {
+        (sess, args, next) => {
             builder.Prompts.choice(sess, "Pick a dialog.", [
                 "Audio Card"
                 ,"Video Card"
@@ -98,6 +96,23 @@ function buildDialogs(bot: builder.UniversalBot): void {
             }
         }
     ]);
+    bot.dialog("/carousel", [
+        (sess, args, next) => {
+            var c = [
+                 cards.createHeroCard(sess)
+                ,cards.createHeroCard(sess)
+                ,cards.createHeroCard(sess)
+            ];
+            var msg = new builder.Message(sess).attachmentLayout(builder.AttachmentLayout.carousel).attachments(c);
+            sess.send(msg);
+            sess.endDialog();
+        }
+    ]);
+    bot.dialog("version", (sess, args, next) => {
+        sess.endDialog("version 0.0.1");
+    }).triggerAction({
+        matches: /version/
+    });
 }
 
 startServer();
