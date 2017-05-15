@@ -2,21 +2,9 @@
     "version": "0.1.0",
     "showOutput": "always",
     "echoCommand": true,
-    "tasks": [
-        {
-            "taskName": "example-bot",
-            "command": "tsc",
-            "args": ["-p", "./bots/example-bot/tsconfig.json"],
-            "isShellCommand": true,
-            "isBuildCommand": true,
-            "problemMatcher": "$tsc"
-        },
-        {
-            "taskName": "edui-bot",
-            "command": "tsc",
-            "args": ["-p", "./bots/edui-bot/tsconfig.json"],
-            "isShellCommand": true,
-            "problemMatcher": "$tsc"
-        }
-    ]
+    "command": "tsc",
+    "args": ["-p", "./tsconfig.json"],
+    "isShellCommand": true,
+    "isBuildCommand": true,
+    "problemMatcher": "$tsc"
 }

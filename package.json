@@ -1,5 +1,5 @@
 {
-  "name": "conf-edui2017-bots-example-bot",
+  "name": "conf-edui2017-examplebot",
   "version": "0.1.0",
   "description": "Microsoft Bot Framework examples for the edUi Conference",
   "main": "server.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/szul/conf-edui2017.git"
+    "url": "git+https://github.com/szul/conf-edui2017-examplebot.git"
   },
   "keywords": [
     "bots",
@@ -20,9 +20,9 @@
   "author": "Michael Szul <michael@szul.us>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/szul/conf-edui2017/issues"
+    "url": "https://github.com/szul/conf-edui2017-examplebot/issues"
   },
-  "homepage": "https://github.com/szul/conf-edui2017#readme",
+  "homepage": "https://github.com/szul/conf-edui2017-examplebot#readme",
   "dependencies": {
     "botbuilder": "^3.8.0",
     "restify": "^4.3.0",

@@ -11,7 +11,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch",
-            "program": "${workspaceRoot}/bots/server.js"
+            "program": "${workspaceRoot}/server.js"
         }
     ]
 }
