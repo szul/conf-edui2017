@@ -21,3 +21,13 @@ What you’ll learn:
 * How natural language processors like LUIS can add artificial intelligence to your bot with very little code from you.
 
 * Stream audio and video, send directions, send specialized UI components called cards, and accept files for processing…straight from the bot!
+
+### How to install
+
+From a shell:
+
+```
+git clone https://github.com/szul/conf-edui2017-examplebot.git
+cd conf-edui2017-examplebot
+npm install
+```
