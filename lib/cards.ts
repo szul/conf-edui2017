@@ -1,5 +1,11 @@
 import * as builder from "botbuilder";
 
+/*
+ * The Bot Framework offers several rich cards that can be sent back to the user.
+ * Below there are several functions that construct and then return various cards to be sent
+ * as attachments in messages.
+ */
+
 export function createAudioCard(sess: builder.Session): builder.AudioCard {
     return new builder.AudioCard(sess)
         .title("Programmable Bots and the Microsoft Bot Framework")
@@ -15,20 +21,20 @@ export function createAudioCard(sess: builder.Session): builder.AudioCard {
 
 export function createVideoCard(sess: builder.Session): builder.VideoCard {
     return new builder.VideoCard(sess)
-        .title("")
+        .title("Experimenting with Bots")
         .subtitle("")
         .text("")
-        .image(builder.CardImage.create(sess, "https://yt3.ggpht.com/-cnBYz6wq0mI/AAAAAAAAAAI/AAAAAAAAAAA/lcXH-518deI/s176-c-k-no-mo-rj-c0xffffff/photo.jpg"))
+         .image(builder.CardImage.create(sess, "https://i.ytimg.com/vi/xHaBZkBYrcE/hqdefault.jpg?custom=true&w=246&h=138&stc=true&jpg444=true&jpgq=90&sp=67&sigh=uq6WYI3DVbfUA8koawZeFo22MIc"))
         .media(<any>[
             { 
-                url: "https://youtu.be/iXF4nhhN3NY?list=PLM7E2OfCPpfrEvxM9JvImU7LLl30aPrkd"
+                url: "https://youtu.be/xHaBZkBYrcE"
             }
     ]);
 }
 
 export function createAnimationCard(sess: builder.Session): builder.AnimationCard {
     return new builder.AnimationCard(sess)
-        .title("")
+        .title("This is a Hamster Eating")
         .subtitle("")
         .image(builder.CardImage.create(sess, "https://yt3.ggpht.com/-cnBYz6wq0mI/AAAAAAAAAAI/AAAAAAAAAAA/lcXH-518deI/s176-c-k-no-mo-rj-c0xffffff/photo.jpg"))
         .media(<any>[
@@ -40,32 +46,32 @@ export function createAnimationCard(sess: builder.Session): builder.AnimationCar
 
 export function createThumbnailCard(sess: builder.Session): builder.ThumbnailCard {
     return new builder.ThumbnailCard(sess)
-        .title("")
+        .title("Glorious")
         .subtitle("")
-        .text("")
+        .text("The problem with being the best is that someone will always eventually come along that is better. That's why I've settled on just being glorious.")
         .images([
-            builder.CardImage.create(sess, "IMAGE_URL")
+            builder.CardImage.create(sess, "https://szul.blob.core.windows.net/images/about-szul.jpg")
         ])
         .buttons([
-            builder.CardAction.openUrl(sess, "TARGET_LINK", "Read more...")
+            builder.CardAction.openUrl(sess, "https://codepunk.io/about/", "Read more...")
     ]);
 }
 
 export function createHeroCard(sess: builder.Session): builder.HeroCard {
     return new builder.HeroCard(sess)
-        .title("")
+        .title("From TypeScript to C# and Back Again")
         .subtitle("")
         .text("")
         .images([
-            builder.CardImage.create(sess, "IMAGE_URL")
+            builder.CardImage.create(sess, "https://szul.blob.core.windows.net/images/from-typescript-to-c-header.jpg")
         ])
         .buttons([
-            builder.CardAction.openUrl(sess, "TARGET_LINK", "Read more...")
+            builder.CardAction.openUrl(sess, "https://codepunk.io/from-typescript-to-c-scripting-and-back-again/", "Read more...")
         ]);
 }
 
 export function createSigninCard(sess: builder.Session): builder.SigninCard {
     return new builder.SigninCard(sess)
         .text("Sign-In Card")
-        .button("Sign-in", "TARGET_LOGIN_URL")
+        .button("Sign-in", "https://google.com")
 }

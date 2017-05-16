@@ -11,6 +11,8 @@
             },
     "files": [
         "./lib/cards.ts",
+        "./lib/middleware.ts",
+        "./lib/token.ts",
         "./lib/app.ts"
     ]
 }
