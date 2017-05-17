@@ -1,4 +1,4 @@
-# edUi Conference 2017 Presentations
+# edUi Conference 2017 Presentation
 
 This repo houses the coding examples and demos for my [edUi Conference](http://eduiconf.org) (2017) talk on [bots](http://eduiconf.org/sessions/building-bots-for-the-conversation-ui/).
 
