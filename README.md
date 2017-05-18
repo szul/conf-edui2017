@@ -22,7 +22,7 @@ What you’ll learn:
 
 * Stream audio and video, send directions, send specialized UI components called cards, and accept files for processing…straight from the bot!
 
-### How to install
+### How to install and run
 
 From a shell:
 
