@@ -30,4 +30,6 @@ From a shell:
 git clone https://github.com/szul/conf-edui2017-examplebot.git
 cd conf-edui2017-examplebot
 npm install
+tsc -p tsconfig.json
+node server.js
 ```
