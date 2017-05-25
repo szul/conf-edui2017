@@ -33,3 +33,4 @@ npm install
 tsc -p tsconfig.json
 node server.js
 ```
+You'll need the [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator) to interact with it.
