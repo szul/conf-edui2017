@@ -24,12 +24,12 @@
   },
   "homepage": "https://github.com/szul/conf-edui2017-examplebot#readme",
   "dependencies": {
-    "@types/request-promise": "^4.1.41",
-    "@types/restify": "^5.0.8",
+    "@types/request-promise": "^4.1.42",
+    "@types/restify": "^5.0.9",
     "bluebird": "^3.5.1",
-    "botbuilder": "^3.10.1",
+    "botbuilder": "^3.15.0",
     "request-promise": "^4.2.2",
-    "restify": "^4.3.1",
-    "typescript": "^2.3.2"
+    "restify": "^4.3.4",
+    "typescript": "^2.9.2"
   }
 }
