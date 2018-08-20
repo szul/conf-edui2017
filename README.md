@@ -34,3 +34,5 @@ tsc -p tsconfig.json
 node server.js
 ```
 You'll need the [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator) to interact with it.
+
+> Note: This project is outdated, and was an example of Bot Framework SDK v3 functionality. The LUIS application for this bot is no longer functional. Feel free to check out my [other bot repositories](https://github.com/szul?utf8=%E2%9C%93&tab=repositories&q=bot&type=&language=).
